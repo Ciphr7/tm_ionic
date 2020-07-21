@@ -1,0 +1,7 @@
+{
+  "name": "IonTestApp",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
