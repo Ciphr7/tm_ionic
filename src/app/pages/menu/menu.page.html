@@ -1,0 +1,106 @@
+<!-- <ion-split-pane contentId="first-content" [disabled]="!paneEnabled"> -->
+  <ion-menu side="start" menuId="first" contentId="main">
+  <!-- <ion-menu contentId="first-content" menuId="first" side="start" type="overlay"> -->
+    <ion-header class="ion-text-center">
+      <ion-toolbar translucent>
+        <ion-grid>
+          <ion-row>
+            <ion-col class="ion-text-center">
+              <img id="logo" src="../../../assets/img/icon2.png" alt="TruckMiles Logo"
+            /></ion-col>
+          </ion-row>
+
+          <ion-row>
+            <ion-col>
+              <ion-title>Plan Trip</ion-title>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content menuId="content">
+      <ion-card class="ion-padding">
+        <p>
+          <ion-label class="ion-padding-end">Set Origin to my GPS location</ion-label>
+          <ion-checkbox id="setGPShome" color="danger" ></ion-checkbox>
+        </p>
+        <p>
+          <ion-label class="ion-padding-end" position="floating">Origin:</ion-label>
+          <ion-input
+            color="danger"
+            placeholder="example location: 19145">
+        </ion-input>
+        </p>
+        <p>
+          <ion-label class="ion-padding-end" position="floating">Destination:</ion-label>
+          <ion-input
+            color="danger"
+            placeholder="example location: 19145"
+          ></ion-input>
+        </p>
+        <p>
+          <ion-button
+            expand="block"
+            color="danger"
+            id="runTrip"
+            onclick="runTrip()">
+            <ion-icon slot="start" name="calculator-outline"></ion-icon>Run
+            Trip</ion-button
+          >
+        </p>
+
+        <p>
+          <ion-label>Select Routing Method</ion-label>
+          <ion-select value="practical">
+            <ion-select-option value="practical">Practical</ion-select-option>
+            <ion-select-option value="shortest">Shortest</ion-select-option>
+            <ion-select-option value="interstate">Interstate</ion-select-option>
+          </ion-select>
+        </p>
+        <p>
+          <ion-label checked="true" class="ion-padding-end">Avoid Toll</ion-label>
+          <ion-checkbox
+            color="danger"
+            slot="end"
+            value="border open"
+            checked>
+        </ion-checkbox>
+        </p>
+        <p>
+          <ion-label class="ion-padding-end">Border Open</ion-label>
+          <ion-checkbox
+            color="danger"
+            slot="end"
+            value="border open">
+          </ion-checkbox>
+        </p>
+      </ion-card>
+    </ion-content>
+  </ion-menu>
+  <ion-menu side="end" menuId="second" contentId="main">
+
+    <ion-header class="ion-text-center">
+      <ion-toolbar translucent>
+        <ion-grid>
+          <ion-row>
+          </ion-row>
+
+          <ion-row>
+            <ion-col
+              ><ion-title class="ion-padding">Trip Summary</ion-title></ion-col
+            >
+          </ion-row>
+        </ion-grid>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content>
+      <ion-card class="ion-padding">
+        
+      </ion-card>
+    </ion-content>
+  </ion-menu>
+
+<ion-router-outlet id="main"></ion-router-outlet>
+<!-- </ion-split-pane> -->
+
+

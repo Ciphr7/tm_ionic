@@ -1,0 +1,34 @@
+ion-card{
+    background-color: wheat;
+}
+
+#logo{
+    height: 6em;
+    padding: 1em;
+}
+/* Set the placeholder color and opacity */
+ion-select::part(placeholder) {
+    color: #20a08a;
+    opacity: 1;
+  }
+  
+  /*
+   * Set the font of the first letter of the placeholder
+   * Shadow parts work with pseudo-elements, too!
+   * https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-elements
+   */
+  ion-select::part(placeholder)::first-letter {
+    font-size: 24px;
+    font-weight: 500;
+  }
+  
+  /* Set the text color */
+  ion-select::part(text) {
+    color: #e82d07;
+  }
+
+  /* Set the icon color and opacity */
+ion-select::part(icon) {
+  color: #e82d07;
+  opacity: 1;
+}
