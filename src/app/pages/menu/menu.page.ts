@@ -22,4 +22,29 @@ export class MenuPage implements OnInit {
   ngOnInit() {
   }
 
+  setGPSHome(){
+    let b = ("setGPShome").slice("checked");
+    if (!b) {
+      $("#origin").val("");
+
+  } else if (navigator.geolocation) {
+      var options = {
+          maximumAge: 0,
+          timeout:30000,
+          enableHighAccuracy: true};
+      navigator.geolocation.getCurrentPosition(success, error, [options]);
+
+  } else {
+      alert("HTML5 Not supported");
+  }
+}
+  error(err) {
+    console.warn(`ERROR(${err.code}): ${err.message}`);
+  }
+  success(position) {
+    var lat = position.coords.latitude;
+    var lon = position.coords.longitude;
+    $("#origin").val(lat + ':' + lon);
+
+  }
 }
