@@ -22,11 +22,13 @@
       <ion-card class="ion-padding">
         <p>
           <ion-label class="ion-padding-end">Set Origin to my GPS location</ion-label>
-          <ion-checkbox id="setGPShome" color="danger" ></ion-checkbox>
+          <ion-checkbox  color="danger" [(ngModel)]="myBoolean" (ionChange)="onMyBooleanChange()"></ion-checkbox>
         </p>
         <p>
           <ion-label class="ion-padding-end" position="floating">Origin:</ion-label>
           <ion-input
+            id="tOrg"
+            [(ngModel)] = "value"
             color="danger"
             placeholder="example location: 19145">
         </ion-input>
@@ -34,8 +36,10 @@
         <p>
           <ion-label class="ion-padding-end" position="floating">Destination:</ion-label>
           <ion-input
+      
             color="danger"
-            placeholder="example location: 19145"
+            placeholder="example location: 19145" 
+            
           ></ion-input>
         </p>
         <p>

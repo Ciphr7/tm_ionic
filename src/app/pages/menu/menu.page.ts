@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { MenuController } from '@ionic/angular';
 @Component({
   selector: 'app-menu',
@@ -7,6 +7,7 @@ import { MenuController } from '@ionic/angular';
 })
 export class MenuPage implements OnInit {
   paneEnabled = true;
+  value: string ="";
 
   constructor(private menu: MenuController) { }
 
@@ -21,30 +22,43 @@ export class MenuPage implements OnInit {
   }
   ngOnInit() {
   }
+//public tOrg : string;
+  onMyBooleanChange(){
+   this.setOrg();
+   }; 
 
-  setGPSHome(){
-    let b = ("setGPShome").slice("checked");
+   setOrg(){
+    let b = true;
     if (!b) {
-      $("#origin").val("");
+      this.value=("");
 
-  } else if (navigator.geolocation) {
-      var options = {
-          maximumAge: 0,
-          timeout:30000,
-          enableHighAccuracy: true};
-      navigator.geolocation.getCurrentPosition(success, error, [options]);
+    } else this.value=("hello");
+  };
 
-  } else {
-      alert("HTML5 Not supported");
-  }
-}
-  error(err) {
-    console.warn(`ERROR(${err.code}): ${err.message}`);
-  }
-  success(position) {
-    var lat = position.coords.latitude;
-    var lon = position.coords.longitude;
-    $("#origin").val(lat + ':' + lon);
 
-  }
+//   setGPSHome(){
+//     let b = ("setGPShome").slice("checked");
+//     if (!b) {
+//       $("#origin").val("");
+
+//   } else if (navigator.geolocation) {
+//       var options = {
+//           maximumAge: 0,
+//           timeout:30000,
+//           enableHighAccuracy: true};
+//       navigator.geolocation.getCurrentPosition(success, error, [options]);
+
+//   } else {
+//       alert("HTML5 Not supported");
+//   }
+// }
+//   error(err) {
+//     console.warn(`ERROR(${err.code}): ${err.message}`);
+//   }
+//   success(position) {
+//     var lat = position.coords.latitude;
+//     var lon = position.coords.longitude;
+//     $("#origin").val(lat + ':' + lon);
+
+//   }
 }
