@@ -1,5 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { MenuController } from '@ionic/angular';
+import { HomePage } from '../home/home.page';
+
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.page.html',
@@ -28,12 +30,43 @@ export class MenuPage implements OnInit {
    }; 
 
    setOrg(){
-    let b = true;
-    if (!b) {
-      this.value=("");
 
-    } else this.value=("hello");
-  };
+     this.value=!this.value;
+     
+     if (!this.value) {
+
+       this.value=("")
+     } else if (navigator.geolocation) {
+      const options = {
+                  maximumAge: 0,
+                  timeout:30000,
+                  enableHighAccuracy: true};
+              this.navigator.geolocation.getCurrentPosition(this.success, this.error, [options]);
+        
+          } else {
+              alert("HTML5 Not supported");
+          }
+        }
+          error(err) {
+            console.warn(`ERROR(${err.code}): ${err.message}`);
+          }
+          success(position) {
+            const lat = position.coords.latitude;
+            const lon = position.coords.longitude;
+            this.value = ("lat + ':' + lon");
+        
+          }
+       
+     
+   }
+
+  //  setOrg(){
+  //   let b = Boolean;
+  //   if (!b) {
+  //     this.value=("");
+
+  //   } else this.value=("hello");
+  // };
 
 
 //   setGPSHome(){
@@ -61,4 +94,4 @@ export class MenuPage implements OnInit {
 //     $("#origin").val(lat + ':' + lon);
 
 //   }
-}
+//}
