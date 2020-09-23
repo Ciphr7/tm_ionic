@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { MenuController } from '@ionic/angular';
+import { MenuController, Platform } from '@ionic/angular';
 import { HomePage } from '../home/home.page';
+import { Geolocation } from '@ionic-native/geolocation/ngx';
 
 @Component({
   selector: 'app-menu',
@@ -11,7 +12,7 @@ export class MenuPage implements OnInit {
   paneEnabled = true;
   value: string ="";
 
-  constructor(private menu: MenuController) { }
+  constructor(private menu: MenuController, private geolocation: Geolocation, private ptl:Platform ){ }
 
   openFirst(){
     this.menu.enable(true, 'first');
@@ -36,62 +37,11 @@ export class MenuPage implements OnInit {
      if (!this.value) {
 
        this.value=("")
-     } else if (navigator.geolocation) {
-      const options = {
-                  maximumAge: 0,
-                  timeout:30000,
-                  enableHighAccuracy: true};
-              this.navigator.geolocation.getCurrentPosition(this.success, this.error, [options]);
-        
-          } else {
-              alert("HTML5 Not supported");
-          }
-        }
-          error(err) {
-            console.warn(`ERROR(${err.code}): ${err.message}`);
-          }
-          success(position) {
-            const lat = position.coords.latitude;
-            const lon = position.coords.longitude;
-            this.value = ("lat + ':' + lon");
-        
-          }
-       
-     
-   }
-
-  //  setOrg(){
-  //   let b = Boolean;
-  //   if (!b) {
-  //     this.value=("");
-
-  //   } else this.value=("hello");
-  // };
-
-
-//   setGPSHome(){
-//     let b = ("setGPShome").slice("checked");
-//     if (!b) {
-//       $("#origin").val("");
-
-//   } else if (navigator.geolocation) {
-//       var options = {
-//           maximumAge: 0,
-//           timeout:30000,
-//           enableHighAccuracy: true};
-//       navigator.geolocation.getCurrentPosition(success, error, [options]);
-
-//   } else {
-//       alert("HTML5 Not supported");
-//   }
-// }
-//   error(err) {
-//     console.warn(`ERROR(${err.code}): ${err.message}`);
-//   }
-//   success(position) {
-//     var lat = position.coords.latitude;
-//     var lon = position.coords.longitude;
-//     $("#origin").val(lat + ':' + lon);
-
-//   }
-//}
+     } else loadPosition() {
+      this.plt.ready().then(() => {
+        this.geolocation.getCurrentPosition().then(resp => {
+          const lat = resp.coords.latitude;
+          const lng = resp.coords.longitude;
+          this.value = (lat, lng);
+          
+        )} 
