@@ -2,7 +2,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-
+import { IonicSelectableModule } from 'ionic-selectable';
 import { IonicModule } from '@ionic/angular';
 
 import { MenuPageRoutingModule } from './menu-routing.module';
@@ -14,7 +14,9 @@ import { MenuPage } from './menu.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    MenuPageRoutingModule, 
+    MenuPageRoutingModule,
+    IonicSelectableModule
+
   ],
   declarations: [MenuPage]
 })

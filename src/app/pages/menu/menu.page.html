@@ -22,25 +22,52 @@
       <ion-card class="ion-padding">
         <p>
           <ion-label class="ion-padding-end">Set Origin to my GPS location</ion-label>
-          <ion-checkbox  color="danger" [(ngModel)]="myBoolean" (ionChange)="onMyBooleanChange()"></ion-checkbox>
+          <ion-checkbox  
+          color="danger" 
+          [(ngModel)]="myBoolean"
+          (ionChange)="onMyBooleanChange()"
+          >
+        </ion-checkbox>
           <!-- <input input(change)="onMyBooleanChange()" type="checkbox" /> -->
         </p>
         <p>
           <ion-label class="ion-padding-end" position="floating">Origin:</ion-label>
           <ion-input
             id="tOrg"
-            [(ngModel)] = "value"
+            [(ngModel)] = "loc1"
             color="danger"
             placeholder="example location: 19145">
         </ion-input>
+        <ion-searchbar [(ngModel)]="locSearch" (ionChange)="searchChanged($event)"></ion-searchbar>
+        <ion-list>
+ 
+          <ion-item button *ngFor="let item of (results | async)">
+       
+            <ion-label text-wrap>
+              <h3>{{ item.City }}</h3>
+              {{ item.State }}
+              {{ item.PostalCode }}
+            </ion-label>
+       
+          </ion-item>
+       
+        </ion-list>
+        </p>
+        <p>    
+      <ion-label>location</ion-label>
+        <!-- <ionic-selectable item-content [(ngModel)]="port" 
+          itemValueField="id" itemTextField="name" [items]="ports" 
+          [canSearch]="true"
+          (onChange)="portChange($event)">
+        </ionic-selectable> -->
         </p>
         <p>
           <ion-label class="ion-padding-end" position="floating">Destination:</ion-label>
           <ion-input
-      
+
+            [(ngModel)] = "loc2"
             color="danger"
-            placeholder="example location: 19145" 
-            
+            placeholder="example location: 19145"             
           ></ion-input>
         </p>
         <p>
