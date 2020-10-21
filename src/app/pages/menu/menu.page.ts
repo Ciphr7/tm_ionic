@@ -66,6 +66,12 @@ export class MenuPage implements OnInit {
     this.results = this.http.getPSDCLocs(this.locSearch);
   }
 
+  locSelected(val){
+
+    this.loc1 = val;
+    this.results = null;
+  }
+
 
 }
   

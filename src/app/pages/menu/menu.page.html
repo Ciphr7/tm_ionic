@@ -41,7 +41,7 @@
         <ion-searchbar [(ngModel)]="locSearch" (ionChange)="searchChanged($event)"></ion-searchbar>
         <ion-list>
  
-          <ion-item button *ngFor="let item of (results | async)">
+          <ion-item button (click)="locSelected(item.PostalCode) " *ngFor="let item of (results | async)">
        
             <ion-label text-wrap>
               <h3>{{ item.City }}</h3>
@@ -55,11 +55,7 @@
         </p>
         <p>    
       <ion-label>location</ion-label>
-        <!-- <ionic-selectable item-content [(ngModel)]="port" 
-          itemValueField="id" itemTextField="name" [items]="ports" 
-          [canSearch]="true"
-          (onChange)="portChange($event)">
-        </ionic-selectable> -->
+        
         </p>
         <p>
           <ion-label class="ion-padding-end" position="floating">Destination:</ion-label>
